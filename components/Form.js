@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, TextInput, Button, TouchableHighlight, Alert,ScrollView } from 'react-native';
+import { Text, StyleSheet, View, TextInput, Button, TouchableHighlight, Alert,ScrollView, Dimensions } from 'react-native';
 import shortid from "react-id-generator";
+const windowHeight = Dimensions.get('window').height;
 
-const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
+const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage, resultado})=>{
     //variables para el formulario de empleado
     
     const [nombre, guardarNombre] = useState('');
     const [apellido, guardarApellido] = useState('');
     const [salario, guardarSalario] = useState(''); 
+
+    
+
+    
+
+   
 
 
     const crearNuevoEmpleado=()=>{
@@ -20,6 +27,8 @@ const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
             mostrarAlerta();
             return;
         }
+
+        
         //Creando nuevo objeto con los datos del formulario
         const emp = { nombre, apellido, salario};
         emp.id=shortid();
@@ -48,7 +57,8 @@ const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
     return(
         <>
         <ScrollView style={styles.formulario}>
-            <View>
+        <Text style={styles.titulo1}>Por favor, ingresa tu informacion</Text>
+        <View>
                 <Text style={styles.label}>Nombre:</Text>
                 <TextInput
                     style={styles.input}
@@ -76,7 +86,7 @@ const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
 
             <View>
             <TouchableHighlight onPress={() => crearNuevoEmpleado()} style={styles.btnSubmit}>
-                <Text style={styles.textoSubmit}>Crear Nueva Cita</Text>
+                <Text style={styles.textoSubmit}>Crear nuevo empleado</Text>
             </TouchableHighlight>
             </View>
 
@@ -91,24 +101,36 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         paddingHorizontal: 20,
         paddingVertical: 10,
-       
+        height: windowHeight * 0.2,
     },
     label: {
         fontWeight: 'bold',
         fontSize: 18,
-        marginTop: 20
+        marginTop: 10
     },
     input: {
         marginTop: 10,
-        height: 50,
+        height: 40,
         borderColor: '#e1e1e1',
         borderWidth: 1,
-        borderStyle: 'solid'
+        borderStyle: 'solid',
+        borderRadius:15
+    },
+    titulo1: {        
+        marginTop: Platform.OS === 'ios' ? 40 : 20,
+        marginBottom: 30,
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop:5,
+        textDecorationLine:'underline'
     },
     btnSubmit: {
         padding: 10,
-        backgroundColor: '#FFEF36',
-        marginVertical: 10
+        backgroundColor: '#2c278d',
+        marginVertical: 10,
+        borderRadius:20,
+        marginTop:20
     },
     textoSubmit: {
         color: '#FFF',

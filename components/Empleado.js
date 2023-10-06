@@ -2,7 +2,7 @@ import React from "react";
 import {Text, StyleSheet, View, TouchableHighlight} from 'react-native';
 
 
-const Empleado = ({item, delete_empleado}) =>{
+const Empleado = ({item, delete_empleado, resultado}) =>{
     const dialogoEliminar = id =>{
         console.log('Eliminando....', id);
         delete_empleado(id);
@@ -10,7 +10,7 @@ const Empleado = ({item, delete_empleado}) =>{
 
     return(        
     <View style={styles.contenedor}>
-        <View style={styles.cita}>
+        <View style={styles.employe}>
             <View>
                 <Text style={styles.label}>Nombre: </Text>
                 <Text style={styles.texto}>{item.nombre}</Text>
@@ -28,19 +28,12 @@ const Empleado = ({item, delete_empleado}) =>{
 
             <View>
                 <Text style={styles.label}>Descuento total: </Text>
-                
+                <Text style={styles.texto}> {item.salario - resultado}</Text>
             </View>
             <View>
-                <Text style={styles.label}>Salario Neto: </Text>
-                
-            </View>
-
-            <View>
-                
-            <TouchableHighlight onPress={() => dialogoEliminar(item.id)}
-            style={styles.btnEliminar}>
-                <Text style={styles.textoEliminar}> Eliminar &times; </Text>
-            </TouchableHighlight>
+                <Text style={styles.label}>Salario Neto: </Text>             
+                <Text style={styles.texto}> {resultado} </Text>
+            
             </View>
         </View>
     </View>
@@ -50,22 +43,22 @@ const Empleado = ({item, delete_empleado}) =>{
 const styles = StyleSheet.create({
     contenedor:{
         marginLeft:20,
-        marginRight:20
+        marginRight:20,        
     }, 
-    cita: {
-        backgroundColor: '#cdcbf0',
+    employe: {
+        backgroundColor: '#FFF',
         borderBottomColor: '#e1e1e1',
         borderStyle: 'solid',
         borderBottomWidth: 1,
         paddingVertical: 20,
         paddingHorizontal: 10,
         borderRadius:10,
-        marginTop:20        
+        marginTop:5        
     },
     label: {
         fontWeight: 'bold',
         fontSize: 18,
-        marginTop: 20   
+        marginTop: 15   
     },
     texto: {
         fontSize: 18,
@@ -83,3 +76,8 @@ const styles = StyleSheet.create({
 })
 export default Empleado;
     
+/*Para eliminar
+<TouchableHighlight onPress={() => dialogoEliminar(item.id)}
+            style={styles.btnEliminar}>
+                <Text style={styles.textoEliminar}> Eliminar &times; </Text>
+            </TouchableHighlight>*/
