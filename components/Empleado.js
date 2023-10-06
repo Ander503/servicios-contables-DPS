@@ -2,10 +2,10 @@ import React from "react";
 import {Text, StyleSheet, View, TouchableHighlight} from 'react-native';
 
 
-const Empleado = ({item, eliminarEmpleado}) =>{
+const Empleado = ({item, delete_empleado}) =>{
     const dialogoEliminar = id =>{
         console.log('Eliminando....', id);
-        eliminarPaciente(id);
+        delete_empleado(id);
     }
 
     return(        
@@ -13,15 +13,17 @@ const Empleado = ({item, eliminarEmpleado}) =>{
         <View style={styles.cita}>
             <View>
                 <Text style={styles.label}>Nombre: </Text>
+                <Text style={styles.texto}>{item.nombre}</Text>
             </View>
 
             <View>
                 <Text style={styles.label}>Apellido: </Text>
+                <Text style={styles.texto}>{item.apellido}</Text>
             </View>
 
             <View>
                 <Text style={styles.label}>Salario Mensual: </Text>
-                
+                <Text style={styles.texto}>{item.salario}</Text>
             </View>
 
             <View>
@@ -57,7 +59,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         paddingVertical: 20,
         paddingHorizontal: 10,
-        borderRadius:10,        
+        borderRadius:10,
+        marginTop:20        
     },
     label: {
         fontWeight: 'bold',

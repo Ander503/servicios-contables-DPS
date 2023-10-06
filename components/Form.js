@@ -88,7 +88,7 @@ const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
 
 const styles = StyleSheet.create({
     formulario: {
-        backgroundColor: '#f31919',
+        backgroundColor: '#FFF',
         paddingHorizontal: 20,
         paddingVertical: 10,
        
