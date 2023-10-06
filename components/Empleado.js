@@ -9,6 +9,7 @@ const Empleado = ({item, eliminarEmpleado}) =>{
     }
 
     return(        
+    <View style={styles.contenedor}>
         <View style={styles.cita}>
             <View>
                 <Text style={styles.label}>Nombre: </Text>
@@ -40,17 +41,23 @@ const Empleado = ({item, eliminarEmpleado}) =>{
             </TouchableHighlight>
             </View>
         </View>
+    </View>
     );
 } 
 
 const styles = StyleSheet.create({
+    contenedor:{
+        marginLeft:20,
+        marginRight:20
+    }, 
     cita: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#cdcbf0',
         borderBottomColor: '#e1e1e1',
         borderStyle: 'solid',
         borderBottomWidth: 1,
         paddingVertical: 20,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        borderRadius:10,        
     },
     label: {
         fontWeight: 'bold',
@@ -71,5 +78,5 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 })
-export default Cita;
+export default Empleado;
     
