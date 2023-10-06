@@ -1,22 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, StyleSheet, View, FlatList, TouchableHighlight, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Empleado from './components/Empleado';
+import Form from './components/Form';
 
 export default function App() {
-  return (
-    
-    <View style={styles.container}>
-      <Empleado></Empleado>
-    </View>
+  
+
+
+
+
+  return (    
     
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    
-    backgroundColor: '#cdcbf0',
-    
-  },
-});
