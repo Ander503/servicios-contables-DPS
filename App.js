@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, View, FlatList, TouchableHighlight, TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
+import { Text, StyleSheet, View, FlatList, TouchableHighlight, TouchableWithoutFeedback, Keyboard, Platform, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Empleado from './components/Empleado';
 import Form from './components/Form';
+import Svg, { Defs, Rect, LinearGradient, Stop } from 'react-native-svg';
 
 export default function App() {
 
@@ -16,7 +17,7 @@ export default function App() {
       try {
         const empsStorage = await AsyncStorage.getItem('empleados');
         if (empsStorage) {
-          setCitas(JSON.parse(empsStorage))
+          setEmpleados(JSON.parse(empsStorage))
         }
       } catch (error) {
         console.log(error);
@@ -54,7 +55,20 @@ export default function App() {
 
   return (    
     <TouchableWithoutFeedback onPress={()=> cerrarTeclado()}>
+      <View style={styles.gradientContainer}>
+                <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
+                    <Defs>
+                        <LinearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <Stop offset="0" stopColor={FROM_COLOR} />
+                            <Stop offset="1" stopColor={TO_COLOR} />
+                        </LinearGradient>
+                    </Defs>
+                    <Rect width="100%" height="100%" fill="url(#grad)" />
+                </Svg>
+      </View>
+
       <View style={styles.contenedor} >
+      <Text style={styles.titulo1}>Bienvenido a Servicios Contables</Text>
 
         <View>
           <TouchableHighlight onPress={()=>mostrarFormulario()} style={styles.btnMostrarForm}>            
@@ -108,6 +122,15 @@ const styles = StyleSheet.create({
   fontWeight: 'bold',
   textAlign: 'center'
   },
+  titulo1: {
+    color: '#FFF',
+    marginTop: Platform.OS === 'ios' ? 40 : 20,
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop:35
+    },
   contenido: {
   flex: 1,
   marginHorizontal: '2.5%',
@@ -115,14 +138,29 @@ const styles = StyleSheet.create({
   listado: {
   flex: 1,
   },
+  
+  gradientContainer: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+},
+
+  //Boton
   btnMostrarForm: {
-  padding: 10,
-  backgroundColor: '#FFEF36',
-  marginVertical: 10
+    padding: 10,
+    backgroundColor: '#2c278d',
+    marginVertical: 10,
+    alignItems: 'center',
+    marginLeft:70,
+    marginRight:70,
   },
+
   textoMostrarForm: {
-  color: '#FFF',
-  fontWeight: 'bold',
-  textAlign: 'center'
-  }
+    color: '#FFF',
+    fontWeight: 'bold',
+    textAlign: 'center'
+    }
   });
