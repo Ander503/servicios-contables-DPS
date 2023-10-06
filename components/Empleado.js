@@ -35,6 +35,12 @@ const Empleado = ({item, delete_empleado, resultado}) =>{
                 <Text style={styles.texto}> {resultado} </Text>
             
             </View>
+            <View>
+                <TouchableHighlight onPress={() => dialogoEliminar(item.id)}
+                style={styles.btnEliminar}>
+                    <Text style={styles.textoEliminar}> Eliminar &times; </Text>
+                </TouchableHighlight>
+            </View>
         </View>
     </View>
     );
@@ -53,7 +59,8 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 10,
         borderRadius:10,
-        marginTop:20        
+        marginTop:20,   
+        marginBottom:20     
     },
     label: {
         fontWeight: 'bold',
@@ -66,7 +73,10 @@ const styles = StyleSheet.create({
     btnEliminar: {
         padding: 10,
         backgroundColor: 'red',
-        marginVertical: 10
+        marginVertical: 10,
+        borderRadius:15,
+        marginLeft:40,
+        marginRight:40
     },
     textoEliminar: {
         color: '#FFF',
