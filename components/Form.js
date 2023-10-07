@@ -3,20 +3,14 @@ import { Text, StyleSheet, View, TextInput, Button, TouchableHighlight, Alert,Sc
 import shortid from "react-id-generator";
 const windowHeight = Dimensions.get('window').height;
 
-const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage, resultado})=>{
-    //variables para el formulario de empleado
-    
+const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage})=>{
+
+    //variables para el formulario de empleado    
     const [nombre, guardarNombre] = useState('');
     const [apellido, guardarApellido] = useState('');
     const [salario, guardarSalario] = useState(''); 
 
-    
-
-    
-
-   
-
-
+    //Crea un nuevo Empleado
     const crearNuevoEmpleado=()=>{
         //Validacion
         if (nombre.trim()===''||
@@ -54,11 +48,13 @@ const Form =({empleados, setEmpleados, saveShowForm, SaveEmployeStorage, resulta
         )
     }
 
+
+    //Formulario de ingreso de datos
     return(
         <>
         <ScrollView style={styles.formulario}>
-        <Text style={styles.titulo1}>Por favor, ingresa tu informacion</Text>
-        <View>
+            <Text style={styles.titulo1}>Por favor, ingresa tu informacion</Text>
+            <View>
                 <Text style={styles.label}>Nombre:</Text>
                 <TextInput
                     style={styles.input}

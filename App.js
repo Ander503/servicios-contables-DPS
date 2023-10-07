@@ -20,7 +20,7 @@ export default function App() {
     //para afp
     let afp=0.0725;
 
-  
+    //Descuento de renta segun el salario
     if (salario <= 325) {
       porcentaje = 0;
     } else if (salario <= 700) {
@@ -37,13 +37,15 @@ export default function App() {
   
     let renta=salario*porcentaje;
     let descuentos=(renta) + (isss*salario)+(afp*salario)
+
+    
     return salario - descuentos ;
   };
   
 
 
 
-  //Obtener datos del storage
+//Obtener datos del storage
   useEffect(() => {
     const obtenerempleadosStorage = async () => {
       try {
@@ -57,24 +59,23 @@ export default function App() {
     }
     obtenerempleadosStorage();}, []);
 
-    const delete_empleado   = id => {
-    const empleados_Filtrados = empleados.filter(emplo => emplo.id !== id);
-    setEmpleados(empleados_Filtrados);
-    SaveEmployeStorage(JSON.stringify(empleados_Filtrados));
-    }
 
-  
+  //Para poder borrar un empleado
+  const delete_empleado   = id => {
+  const empleados_Filtrados = empleados.filter(emplo => emplo.id !== id);
+  setEmpleados(empleados_Filtrados);
+  SaveEmployeStorage(JSON.stringify(empleados_Filtrados));
+  }
 
       
   // Muestra u oculta el Formulario
-    const mostrarFormulario = () => {
-      saveShowForm(!showform);}
+  const mostrarFormulario = () => {
+    saveShowForm(!showform);}
     
-    const cerrarTeclado = () => {
-      Keyboard.dismiss();
-    }
+  const cerrarTeclado = () => {
+    Keyboard.dismiss();}
   
-  // Almacenar las citas en storage
+  // Almacenar los empleados en storage
     const SaveEmployeStorage = async (personJSON) => {
       try {
         await AsyncStorage.setItem('empleados', personJSON);
@@ -89,10 +90,7 @@ export default function App() {
 
   return (       
 
-    <ImageBackground
-    source={require('./src/img/fondo2.jpg')} // Ruta de la imagen de fondo
-    style={styles.backgroundImage}
-  >
+  <ImageBackground source={require('./src/img/fondo2.jpg')}style={styles.backgroundImage}> 
     <TouchableWithoutFeedback onPress={()=> cerrarTeclado()}>
       
 
