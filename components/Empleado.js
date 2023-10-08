@@ -23,16 +23,16 @@ const Empleado = ({item, delete_empleado, resultado}) =>{
 
             <View>
                 <Text style={styles.label}>Salario Mensual: </Text>
-                <Text style={styles.texto}>{item.salario}</Text>
+                <Text style={styles.texto}>${item.salario}</Text>
             </View>
 
             <View>
                 <Text style={styles.label}>Descuento total: </Text>
-                <Text style={styles.texto}> {item.salario - resultado}</Text>
+                <Text style={styles.texto}>${item.salario - resultado}</Text>
             </View>
             <View>
                 <Text style={styles.label}>Salario Neto: </Text>             
-                <Text style={styles.texto}> {resultado} </Text>
+                <Text style={styles.texto}>${resultado} </Text>
             
             </View>
             <View>
